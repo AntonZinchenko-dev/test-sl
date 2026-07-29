@@ -1,0 +1,78 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API для UL - Auctions",
+    "description": "API для мобильных приложений и web UL",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "/api/v1/"
+    }
+  ],
+  "paths": {
+    "/auctions/list": {
+      "post": {
+        "tags": ["Auctions"],
+        "summary": "Список аукционов",
+        "operationId": "listAuctions",
+        "requestBody": {
+          "required": false,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AuctionListRequest" } } }
+        },
+        "responses": {
+          "200": { "description": "Успешный ответ", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AuctionListResponseBase" } } } },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "422": { "$ref": "#/components/responses/ValidationFailed" },
+          "503": { "$ref": "#/components/responses/ServiceUnavailable" }
+        }
+      }
+    },
+    "/auctions/{auctionUuid}": {
+      "get": {
+        "tags": ["Auctions"],
+        "summary": "Данные аукциона",
+        "operationId": "getAuction",
+        "parameters": [{ "name": "auctionUuid", "in": "path", "required": true, "schema": { "type": "string", "format": "uuid" } }],
+        "responses": {
+          "200": { "description": "Успешный ответ", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AuctionShowResponse" } } } },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "503": { "$ref": "#/components/responses/ServiceUnavailable" }
+        }
+      }
+    },
+    "/auctions/{auctionUuid}/bets": {
+      "get": {
+        "tags": ["Auctions"],
+        "summary": "Список ставок аукциона",
+        "operationId": "listBets",
+        "parameters": [
+          { "name": "auctionUuid", "in": "path", "required": true, "schema": { "type": "string", "format": "uuid" } },
+          { "name": "all", "in": "query", "required": false, "schema": { "type": "boolean", "nullable": true } }
+        ],
+        "responses": {
+          "200": { "description": "Успешный ответ", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/BetListResponse" } } } },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "503": { "$ref": "#/components/responses/ServiceUnavailable" }
+        }
+      },
+      "post": {
+        "tags": ["Auctions"],
+        "summary": "Установить ставку",
+        "operationId": "setBet",
+        "parameters": [{ "name": "auctionUuid", "in": "path", "required": true, "schema": { "type": "string", "format": "uuid" } }],
+        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SetBetRequest" } } } },
+        "responses": {
+          "200": { "description": "Ставка принята — ответ проксируется от upstream" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "422": { "$ref": "#/components/responses/ValidationFailed" },
+          "503": { "$ref": "#/components/responses/ServiceUnavailable" }
+        }
+      }
+    }
+  },
+  "note": "Полная схема (все components.schemas) была передана кандидату текстом в постановке задания и использована 1:1 при типизации src/entities/*/model/types.ts. Здесь для краткости повторены только paths — см. типы в коде как источник соответствия схеме."
+}
