@@ -1,7 +1,6 @@
 import { clsx } from 'clsx';
-import { Badge } from '@/shared/ui/Badge.component';
-import { IconTrophy } from '@/shared/ui/icons.component';
-import { formatDateTime, formatMoney } from '@/shared/lib/format';
+import { Badge, IconTrophy } from '@/shared/ui';
+import { formatDateTime, formatMoney } from '@/shared/lib';
 import type { BetItem } from '../model/types';
 
 export function BetRow({ bet, index }: { bet: BetItem; index: number }) {

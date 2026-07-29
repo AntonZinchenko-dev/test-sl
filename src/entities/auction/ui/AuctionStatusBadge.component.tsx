@@ -1,5 +1,5 @@
-import { Badge } from '@/shared/ui/Badge.component';
-import { TRADING_STATUS_TONE } from '@/shared/config/enums';
+import { Badge } from '@/shared/ui';
+import { TRADING_STATUS_TONE } from '@/shared/config';
 import { tradingStatusLabel } from '../lib/mappers';
 
 export function AuctionStatusBadge({ status }: { status: string }) {

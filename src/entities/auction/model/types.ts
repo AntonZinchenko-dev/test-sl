@@ -1,4 +1,4 @@
-import type { AuctionType, AuctionStatus, TradingStatus } from '@/shared/config/enums';
+import type { AuctionType, AuctionStatus, TradingStatus } from '@/shared/config';
 
 export interface AuctionListItemMain {
   id: number;

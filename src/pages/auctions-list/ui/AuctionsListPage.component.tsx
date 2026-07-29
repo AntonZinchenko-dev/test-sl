@@ -1,8 +1,6 @@
 import { useNavigate } from '@tanstack/react-router';
-import { FiltersPanel } from '@/features/auctions-filters/ui/FiltersPanel.component';
-import { FiltersMobileTrigger } from '@/features/auctions-filters/ui/FiltersMobileTrigger.component';
-import { AuctionsListWidget } from '@/widgets/auctions-list/ui/AuctionsListWidget.component';
-import { AUCTIONS_SEARCH_DEFAULTS, type AuctionsSearch } from '@/features/auctions-filters/model/schema';
+import { FiltersPanel, FiltersMobileTrigger, AUCTIONS_SEARCH_DEFAULTS, type AuctionsSearch } from '@/features/auctions-filters';
+import { AuctionsListWidget } from '@/widgets/auctions-list';
 
 export function AuctionsListPage({ search }: { search: AuctionsSearch }) {
   const navigate = useNavigate({ from: '/' });

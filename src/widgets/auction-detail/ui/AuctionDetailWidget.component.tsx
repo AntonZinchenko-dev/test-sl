@@ -1,10 +1,12 @@
 import { Link } from '@tanstack/react-router';
-import { Badge } from '@/shared/ui/Badge.component';
-import { Button } from '@/shared/ui/Button.component';
-import { buttonLinkClass } from '@/shared/ui/button-link-style';
-import { CardSection, DefinitionRow } from '@/shared/ui/Card.component';
-import { TabsList, tabItemClass } from '@/shared/ui/Tabs.component';
 import {
+  Badge,
+  Button,
+  buttonLinkClass,
+  CardSection,
+  DefinitionRow,
+  TabsList,
+  tabItemClass,
   IconRoute,
   IconBox,
   IconBuilding,
@@ -14,13 +16,11 @@ import {
   IconMail,
   IconLock,
   IconEyeOff,
-} from '@/shared/ui/icons.component';
-import { formatDateTime, formatMoney, formatNumber } from '@/shared/lib/format';
-import { auctionTypeLabel, auctionStatusLabel } from '@/entities/auction/lib/mappers';
-import { AuctionStatusBadge } from '@/entities/auction/ui/AuctionStatusBadge.component';
-import { BetsHistoryList } from '@/features/bets-history/ui/BetsHistoryList.component';
-import { AUCTIONS_SEARCH_DEFAULTS } from '@/features/auctions-filters/model/schema';
-import type { AuctionShowResponse } from '@/entities/auction/model/types';
+} from '@/shared/ui';
+import { formatDateTime, formatMoney, formatNumber } from '@/shared/lib';
+import { auctionTypeLabel, auctionStatusLabel, AuctionStatusBadge, type AuctionShowResponse } from '@/entities/auction';
+import { BetsHistoryList } from '@/features/bets-history';
+import { AUCTIONS_SEARCH_DEFAULTS } from '@/features/auctions-filters';
 
 export function AuctionDetailWidget({
   auction,

@@ -1,4 +1,4 @@
-import { AUCTION_TYPE_LABELS, AUCTION_STATUS_LABELS, TRADING_STATUS_LABELS } from '@/shared/config/enums';
+import { AUCTION_TYPE_LABELS, AUCTION_STATUS_LABELS, TRADING_STATUS_LABELS } from '@/shared/config';
 import type { AuctionListItem } from '../model/types';
 
 export function auctionTypeLabel(type: string): string {

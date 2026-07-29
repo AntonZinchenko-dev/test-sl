@@ -1,7 +1,7 @@
 import { http, HttpResponse } from 'msw';
 import { db, recalcPlaces } from './db';
-import { AUCTION_STATUS_NUMERIC } from '@/shared/config/enums';
-import type { AuctionListRequest, AuctionListItem } from '@/entities/auction/model/types';
+import { AUCTION_STATUS_NUMERIC } from '@/shared/config';
+import type { AuctionListRequest, AuctionListItem } from '@/entities/auction';
 
 const problem = (status: number, code: string, title: string, message: string) =>
   HttpResponse.json({ code, title, message }, { status });

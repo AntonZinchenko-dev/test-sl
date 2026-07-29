@@ -1,6 +1,6 @@
-import { CITIES } from '@/shared/config/cities';
-import { dateOnlyToIsoOffset } from '@/shared/lib/format';
-import type { AuctionListRequest } from '@/entities/auction/model/types';
+import { CITIES } from '@/shared/config';
+import { dateOnlyToIsoOffset } from '@/shared/lib';
+import type { AuctionListRequest } from '@/entities/auction';
 import type { AuctionsSearch } from './schema';
 
 // Строит тело POST /auctions/list из search-параметров URL.

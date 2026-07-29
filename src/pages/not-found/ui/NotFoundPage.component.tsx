@@ -1,7 +1,6 @@
 import { Link } from '@tanstack/react-router';
-import { buttonLinkClass } from '@/shared/ui/button-link-style';
-import { IconAlertCircle } from '@/shared/ui/icons.component';
-import { AUCTIONS_SEARCH_DEFAULTS } from '@/features/auctions-filters/model/schema';
+import { buttonLinkClass, IconAlertCircle } from '@/shared/ui';
+import { AUCTIONS_SEARCH_DEFAULTS } from '@/features/auctions-filters';
 
 export function NotFoundPage() {
   return (

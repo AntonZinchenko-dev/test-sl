@@ -12,10 +12,12 @@ interface MultiSelectProps {
   value: string[] | undefined;
   onChange: (next: string[] | undefined) => void;
   placeholder?: string;
+  /** Доступное имя триггера — важно, т. к. видимый текст меняется в зависимости от выбора. */
+  ariaLabel?: string;
 }
 
 // Красивый мультиселект-дропдаун с чекбоксами (замена кликабельным бейджам) — поддерживает выбор нескольких значений сразу.
-export function MultiSelect({ options, value, onChange, placeholder = 'Любой' }: MultiSelectProps) {
+export function MultiSelect({ options, value, onChange, placeholder = 'Любой', ariaLabel }: MultiSelectProps) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const selected = value ?? [];
@@ -57,6 +59,7 @@ export function MultiSelect({ options, value, onChange, placeholder = 'Любо�
         onClick={() => setOpen((o) => !o)}
         aria-haspopup="listbox"
         aria-expanded={open}
+        aria-label={ariaLabel}
         className={clsx(
           'flex w-full items-center justify-between gap-2 rounded-lg border bg-white px-3 py-2 text-left text-sm transition-colors',
           'focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-100',

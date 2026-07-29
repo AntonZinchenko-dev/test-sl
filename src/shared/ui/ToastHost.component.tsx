@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import { useUiStore } from '@/shared/store/ui-store';
+import { useUiStore } from '@/shared/model';
 import { IconCheckCircle, IconAlertCircle, IconClose } from './icons.component';
 
 export function ToastHost() {

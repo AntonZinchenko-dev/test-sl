@@ -1,12 +1,10 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect, useMemo } from 'react';
-import { Input } from '@/shared/ui/Input.component';
-import { Button } from '@/shared/ui/Button.component';
-import { IconAlertCircle, IconLock } from '@/shared/ui/icons.component';
-import { formatMoney } from '@/shared/lib/format';
+import { Input, Button, IconAlertCircle, IconLock } from '@/shared/ui';
+import { formatMoney } from '@/shared/lib';
 import { buildSetBetSchema, type SetBetFormValues } from '../model/schema';
-import type { AuctionShowTradingPrice } from '@/entities/auction/model/types';
+import type { AuctionShowTradingPrice } from '@/entities/auction';
 
 interface SetBetFormProps {
   price: AuctionShowTradingPrice;

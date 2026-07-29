@@ -1,7 +1,6 @@
 import { Link, Outlet, useRouterState } from '@tanstack/react-router';
-import { ToastHost } from '@/shared/ui/ToastHost.component';
-import { IconGavel } from '@/shared/ui/icons.component';
-import { AUCTIONS_SEARCH_DEFAULTS } from '@/features/auctions-filters/model/schema';
+import { ToastHost, IconGavel } from '@/shared/ui';
+import { AUCTIONS_SEARCH_DEFAULTS } from '@/features/auctions-filters';
 
 export function AppShell() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });

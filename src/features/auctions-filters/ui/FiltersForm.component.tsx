@@ -1,11 +1,7 @@
 import { useState } from 'react';
-import { Input } from '@/shared/ui/Input.component';
-import { Select } from '@/shared/ui/Select.component';
-import { Button } from '@/shared/ui/Button.component';
-import { Checkbox } from '@/shared/ui/Checkbox.component';
-import { MultiSelect } from '@/shared/ui/MultiSelect.component';
-import { CITIES } from '@/shared/config/cities';
+import { Input, Select, Button, Checkbox, MultiSelect } from '@/shared/ui';
 import {
+  CITIES,
   AUCTION_TYPES,
   AUCTION_TYPE_LABELS,
   AUCTION_STATUSES,
@@ -13,7 +9,7 @@ import {
   AUCTION_STATUS_NUMERIC,
   TRADING_STATUSES,
   TRADING_STATUS_LABELS,
-} from '@/shared/config/enums';
+} from '@/shared/config';
 import type { AuctionsSearch } from '../model/schema';
 import { AUCTIONS_SEARCH_DEFAULTS } from '../model/schema';
 
@@ -82,12 +78,18 @@ export function FiltersForm({ value, onApply, onReset, submitLabel = 'Приме
 
       <div className={fieldWrap}>
         <label className={fieldLabel}>Тип аукциона</label>
-        <MultiSelect options={AUC_TYPE_OPTIONS} value={draft.auc_type} onChange={(v) => set('auc_type', v)} />
+        <MultiSelect
+          ariaLabel="Тип аукциона"
+          options={AUC_TYPE_OPTIONS}
+          value={draft.auc_type}
+          onChange={(v) => set('auc_type', v)}
+        />
       </div>
 
       <div className={fieldWrap}>
         <label className={fieldLabel}>Статус аукциона</label>
         <MultiSelect
+          ariaLabel="Статус аукциона"
           options={AUCTION_STATUS_OPTIONS}
           value={draft.statuses?.map(String)}
           onChange={(v) => set('statuses', v ? v.map(Number) : undefined)}
@@ -96,7 +98,12 @@ export function FiltersForm({ value, onApply, onReset, submitLabel = 'Приме
 
       <div className={fieldWrap}>
         <label className={fieldLabel}>Мой торговый статус</label>
-        <MultiSelect options={TRADING_STATUS_OPTIONS} value={draft.status} onChange={(v) => set('status', v)} />
+        <MultiSelect
+          ariaLabel="Мой торговый статус"
+          options={TRADING_STATUS_OPTIONS}
+          value={draft.status}
+          onChange={(v) => set('status', v)}
+        />
       </div>
 
       <div className={compact ? 'grid grid-cols-1 gap-4' : 'grid grid-cols-2 gap-3'}>

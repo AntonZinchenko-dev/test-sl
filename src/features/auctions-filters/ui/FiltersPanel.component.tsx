@@ -1,5 +1,4 @@
-import { Card } from '@/shared/ui/Card.component';
-import { IconFilter } from '@/shared/ui/icons.component';
+import { Card, IconFilter } from '@/shared/ui';
 import { FiltersForm } from './FiltersForm.component';
 import type { AuctionsSearch } from '../model/schema';
 

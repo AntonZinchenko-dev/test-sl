@@ -1,10 +1,6 @@
 import { Link } from '@tanstack/react-router';
-import { Badge } from '@/shared/ui/Badge.component';
-import { Button } from '@/shared/ui/Button.component';
-import { Tooltip } from '@/shared/ui/Tooltip.component';
-import { buttonLinkClass } from '@/shared/ui/button-link-style';
-import { IconRoute, IconCalendar, IconBox } from '@/shared/ui/icons.component';
-import { formatDate, formatMoney, formatNumber } from '@/shared/lib/format';
+import { Badge, Button, Tooltip, buttonLinkClass, IconRoute, IconCalendar, IconBox } from '@/shared/ui';
+import { formatDate, formatMoney, formatNumber } from '@/shared/lib';
 import type { AuctionListItem } from '../model/types';
 import { auctionTypeLabel, getPrimaryAction, auctionStatusLabel } from '../lib/mappers';
 import { AuctionStatusBadge } from './AuctionStatusBadge.component';
@@ -24,6 +20,8 @@ export function AuctionCard({ item }: { item: AuctionListItem }) {
 
   return (
     <div
+      data-testid="auction-card"
+      data-cargo-num={item.main.cargo_num}
       className="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-card transition-shadow duration-150 hover:shadow-card-hover sm:p-5"
       onMouseEnter={() => prefetch(auctionUuid)}
       onFocus={() => prefetch(auctionUuid)}
@@ -87,7 +85,7 @@ export function AuctionCard({ item }: { item: AuctionListItem }) {
         </div>
 
         {action.kind === 'disabled' ? (
-          <Button variant="secondary" size="sm" disabled className="shrink-0">
+          <Button variant="secondary" size="sm" disabled className="shrink-0" data-testid="auction-primary-action">
             {action.label}
           </Button>
         ) : action.kind === 'view-bets' ? (
@@ -96,11 +94,17 @@ export function AuctionCard({ item }: { item: AuctionListItem }) {
             params={{ auctionUuid }}
             search={{ tab: 'bets' }}
             className={buttonLinkClass('ghost', 'sm', 'shrink-0')}
+            data-testid="auction-primary-action"
           >
             {action.label}
           </Link>
         ) : (
-          <Link to="/auctions/$auctionUuid/bet" params={{ auctionUuid }} className={buttonLinkClass('primary', 'sm', 'shrink-0')}>
+          <Link
+            to="/auctions/$auctionUuid/bet"
+            params={{ auctionUuid }}
+            className={buttonLinkClass('primary', 'sm', 'shrink-0')}
+            data-testid="auction-primary-action"
+          >
             {action.label}
           </Link>
         )}

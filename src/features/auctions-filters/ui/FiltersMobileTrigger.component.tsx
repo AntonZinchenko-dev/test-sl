@@ -1,7 +1,5 @@
-import { Sheet } from '@/shared/ui/Sheet.component';
-import { Button } from '@/shared/ui/Button.component';
-import { IconFilter } from '@/shared/ui/icons.component';
-import { useUiStore } from '@/shared/store/ui-store';
+import { Sheet, Button, IconFilter } from '@/shared/ui';
+import { useUiStore } from '@/shared/model';
 import { FiltersForm, countActiveFilters } from './FiltersForm.component';
 import type { AuctionsSearch } from '../model/schema';
 

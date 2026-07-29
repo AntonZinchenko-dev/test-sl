@@ -1,8 +1,6 @@
-import { AuctionDetailWidget } from '@/widgets/auction-detail/ui/AuctionDetailWidget.component';
-import { EmptyState, ErrorState } from '@/shared/ui/EmptyState.component';
-import { DetailSkeleton } from '@/shared/ui/Skeleton.component';
-import { Button } from '@/shared/ui/Button.component';
-import { useAuctionDetailQuery } from '@/entities/auction/api/use-auction-queries';
+import { AuctionDetailWidget } from '@/widgets/auction-detail';
+import { EmptyState, ErrorState, DetailSkeleton, Button } from '@/shared/ui';
+import { useAuctionDetailQuery } from '@/entities/auction';
 
 export function AuctionDetailPage({ auctionUuid, tab }: { auctionUuid: string; tab: 'overview' | 'bets' }) {
   const { data, isLoading, isError, error, refetch } = useAuctionDetailQuery(auctionUuid);

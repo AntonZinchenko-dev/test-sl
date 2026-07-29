@@ -1,12 +1,7 @@
 import { clsx } from 'clsx';
-import { AuctionCard } from '@/entities/auction/ui/AuctionCard.component';
-import { AuctionCardSkeleton } from '@/shared/ui/Skeleton.component';
-import { EmptyState, ErrorState } from '@/shared/ui/EmptyState.component';
-import { Pagination } from '@/shared/ui/Pagination.component';
-import { Button } from '@/shared/ui/Button.component';
-import { useAuctionsListQuery } from '@/entities/auction/api/use-auction-queries';
-import { buildAuctionListRequest } from '@/features/auctions-filters/model/to-request';
-import type { AuctionsSearch } from '@/features/auctions-filters/model/schema';
+import { AuctionCard, useAuctionsListQuery } from '@/entities/auction';
+import { AuctionCardSkeleton, EmptyState, ErrorState, Pagination, Button } from '@/shared/ui';
+import { buildAuctionListRequest, type AuctionsSearch } from '@/features/auctions-filters';
 
 interface AuctionsListWidgetProps {
   search: AuctionsSearch;

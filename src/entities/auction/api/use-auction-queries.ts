@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { queryKeys } from '@/shared/api/query-keys';
+import { queryKeys } from '@/shared/api';
 import { fetchAuctionsList, fetchAuctionDetail } from './auction-api';
 import type { AuctionListRequest } from '../model/types';
 

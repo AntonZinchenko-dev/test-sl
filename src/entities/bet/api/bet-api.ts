@@ -1,4 +1,4 @@
-import { request } from '@/shared/api/http-client';
+import { request } from '@/shared/api';
 import type { BetListResponse, SetBetRequest } from '../model/types';
 
 export function fetchBets(auctionUuid: string, all = false): Promise<BetListResponse> {

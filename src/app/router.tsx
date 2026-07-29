@@ -1,11 +1,11 @@
 import { createRootRoute, createRoute, createRouter } from '@tanstack/react-router';
 import { z } from 'zod';
-import { AppShell } from '@/widgets/app-shell/ui/AppShell.component';
-import { AuctionsListPage } from '@/pages/auctions-list/ui/AuctionsListPage.component';
-import { AuctionDetailPage } from '@/pages/auction-detail/ui/AuctionDetailPage.component';
-import { SetBetPage } from '@/pages/set-bet/ui/SetBetPage.component';
-import { NotFoundPage } from '@/pages/not-found/ui/NotFoundPage.component';
-import { parseAuctionsSearch, type AuctionsSearch } from '@/features/auctions-filters/model/schema';
+import { AppShell } from '@/widgets/app-shell';
+import { AuctionsListPage } from '@/pages/auctions-list';
+import { AuctionDetailPage } from '@/pages/auction-detail';
+import { SetBetPage } from '@/pages/set-bet';
+import { NotFoundPage } from '@/pages/not-found';
+import { parseAuctionsSearch, type AuctionsSearch } from '@/features/auctions-filters';
 
 const rootRoute = createRootRoute({ component: AppShell, notFoundComponent: NotFoundPage });
 

@@ -1,8 +1,5 @@
-import { BetRow } from '@/entities/bet/ui/BetRow.component';
-import { EmptyState } from '@/shared/ui/EmptyState.component';
-import { Skeleton } from '@/shared/ui/Skeleton.component';
-import { IconUsers, IconEyeOff } from '@/shared/ui/icons.component';
-import { useBetsQuery } from '@/entities/bet/api/use-bet-queries';
+import { BetRow, useBetsQuery } from '@/entities/bet';
+import { EmptyState, Skeleton, IconUsers, IconEyeOff } from '@/shared/ui';
 
 export function BetsHistoryList({ auctionUuid, hidden }: { auctionUuid: string; hidden: boolean }) {
   const { data, isLoading, isError } = useBetsQuery(auctionUuid, { enabled: !hidden });

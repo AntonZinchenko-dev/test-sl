@@ -1,4 +1,4 @@
-import { request } from '@/shared/api/http-client';
+import { request } from '@/shared/api';
 import type { AuctionListRequest, AuctionListResponseBase, AuctionShowResponse } from '../model/types';
 
 export function fetchAuctionsList(body: AuctionListRequest): Promise<AuctionListResponseBase> {

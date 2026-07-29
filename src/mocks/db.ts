@@ -1,10 +1,6 @@
-import { CITIES } from '@/shared/config/cities';
-import { AUCTION_STATUS_NUMERIC } from '@/shared/config/enums';
-import type {
-  AuctionListItem,
-  AuctionShowResponse,
-} from '@/entities/auction/model/types';
-import type { BetItem } from '@/entities/bet/model/types';
+import { CITIES, AUCTION_STATUS_NUMERIC } from '@/shared/config';
+import type { AuctionListItem, AuctionShowResponse } from '@/entities/auction';
+import type { BetItem } from '@/entities/bet';
 
 function mulberry32(seed: number) {
   return function () {

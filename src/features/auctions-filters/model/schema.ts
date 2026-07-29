@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { TRADING_STATUSES, AUCTION_STATUS_NUMERIC, AUCTION_TYPES } from '@/shared/config/enums';
+import { TRADING_STATUSES, AUCTION_STATUS_NUMERIC, AUCTION_TYPES } from '@/shared/config';
 
 const csv = () =>
   z.preprocess((v) => {

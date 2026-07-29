@@ -1,17 +1,11 @@
 import { Link } from '@tanstack/react-router';
-import { Card } from '@/shared/ui/Card.component';
-import { Skeleton } from '@/shared/ui/Skeleton.component';
-import { ErrorState } from '@/shared/ui/EmptyState.component';
-import { buttonLinkClass } from '@/shared/ui/button-link-style';
-import { IconAlertCircle, IconCheckCircle, IconChevronLeft } from '@/shared/ui/icons.component';
-import { formatMoney } from '@/shared/lib/format';
-import { auctionTypeLabel } from '@/entities/auction/lib/mappers';
-import { SetBetForm } from '@/features/set-bet/ui/SetBetForm.component';
-import { useAuctionDetailQuery } from '@/entities/auction/api/use-auction-queries';
-import { useSetBetMutation } from '@/entities/bet/api/use-bet-queries';
-import { useUiStore } from '@/shared/store/ui-store';
-import { ApiError } from '@/shared/api/errors';
-import type { SetBetFormValues } from '@/features/set-bet/model/schema';
+import { Card, Skeleton, ErrorState, buttonLinkClass, IconAlertCircle, IconCheckCircle, IconChevronLeft } from '@/shared/ui';
+import { formatMoney } from '@/shared/lib';
+import { auctionTypeLabel, useAuctionDetailQuery } from '@/entities/auction';
+import { useSetBetMutation } from '@/entities/bet';
+import { SetBetForm, type SetBetFormValues } from '@/features/set-bet';
+import { useUiStore } from '@/shared/model';
+import { ApiError } from '@/shared/api';
 
 export function SetBetPage({ auctionUuid }: { auctionUuid: string }) {
   const { data, isLoading, isError } = useAuctionDetailQuery(auctionUuid);
