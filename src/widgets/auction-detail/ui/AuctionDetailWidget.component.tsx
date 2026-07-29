@@ -5,6 +5,7 @@ import {
   buttonLinkClass,
   CardSection,
   DefinitionRow,
+  StatItem,
   TabsList,
   tabItemClass,
   IconRoute,
@@ -214,13 +215,20 @@ export function AuctionDetailWidget({
           </CardSection>
 
           <CardSection title="Параметры торгов" icon={<IconCoins width={16} height={16} />} className="xl:col-span-2">
-            <div className="grid grid-cols-2 gap-x-6 gap-y-2 sm:grid-cols-3">
-              <DefinitionRow label="Текущая цена" value={formatMoney(trading.price.current)} />
-              <DefinitionRow label="Доступная цена" value={formatMoney(trading.price.available)} />
-              <DefinitionRow label="Мин / Макс" value={`${formatMoney(trading.price.min)} / ${formatMoney(trading.price.max)}`} />
-              <DefinitionRow label="Шаг ставки" value={formatMoney(trading.price.step)} />
-              <DefinitionRow label="Цена за км" value={`${formatNumber(trading.price.price_per_km, 2)} ₽`} />
-              <DefinitionRow label="Период торгов" value={`${formatDateTime(trading.start_time)} — ${formatDateTime(trading.stop_time)}`} />
+            {/* Label-сверху/value-снизу вместо DefinitionRow (label слева/value справа в одну строку) —
+                в узкой grid-колонке паре из длинных значений (суммы, диапазон дат) не хватало ширины,
+                и текст соседних ячеек наезжал друг на друга. */}
+            <div className="grid grid-cols-2 gap-x-5 gap-y-4 sm:grid-cols-3">
+              <StatItem label="Текущая цена" value={formatMoney(trading.price.current)} />
+              <StatItem label="Доступная цена" value={formatMoney(trading.price.available)} />
+              <StatItem label="Мин / Макс" value={`${formatMoney(trading.price.min)} / ${formatMoney(trading.price.max)}`} />
+              <StatItem label="Шаг ставки" value={formatMoney(trading.price.step)} />
+              <StatItem label="Цена за км" value={`${formatNumber(trading.price.price_per_km, 2)} ₽`} />
+              <StatItem
+                label="Период торгов"
+                value={`${formatDateTime(trading.start_time)} — ${formatDateTime(trading.stop_time)}`}
+                className="col-span-2 sm:col-span-3"
+              />
             </div>
           </CardSection>
         </div>

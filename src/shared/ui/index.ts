@@ -1,7 +1,7 @@
 export { Button } from './Button.component';
 export { buttonLinkClass } from './button-link-style';
 export { Badge } from './Badge.component';
-export { Card, CardSection, DefinitionRow } from './Card.component';
+export { Card, CardSection, DefinitionRow, StatItem } from './Card.component';
 export { Checkbox } from './Checkbox.component';
 export { EmptyState, ErrorState } from './EmptyState.component';
 export { Input } from './Input.component';

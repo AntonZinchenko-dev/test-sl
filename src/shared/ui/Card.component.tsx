@@ -43,3 +43,16 @@ export function DefinitionRow({ label, value }: { label: ReactNode; value: React
     </div>
   );
 }
+
+// В отличие от DefinitionRow (label слева / value справа в одну строку) — этот вариант
+// кладёт label над value. Нужен для плотных grid-раскладок (например, «Параметры торгов»):
+// в узкой колонке grid-ячейки паре «label ... value» в одну строку не хватает места, и текст
+// начинает наезжать сам на себя; вертикальная раскладка эту проблему снимает на любой ширине.
+export function StatItem({ label, value, className }: { label: ReactNode; value: ReactNode; className?: string }) {
+  return (
+    <div className={clsx('flex min-w-0 flex-col gap-0.5', className)}>
+      <span className="text-[11px] font-semibold uppercase tracking-wide text-slate-400">{label}</span>
+      <span className="text-[13.5px] font-semibold leading-snug text-slate-800">{value}</span>
+    </div>
+  );
+}
