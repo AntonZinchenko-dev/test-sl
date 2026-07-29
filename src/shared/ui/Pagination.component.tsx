@@ -43,10 +43,14 @@ export function Pagination({ page, lastPage, total, perPage, onChange, onPerPage
   };
 
   return (
-    <div className="flex flex-col-reverse items-center gap-4 border-t border-slate-100 py-5 sm:flex-row sm:justify-between">
+    // Полный набор (номера страниц, первая/последняя, переход по номеру) включается только
+    // с lg — на «средних» экранах (планшеты, ~640–1023px) этому вместе с селектором
+    // «показывать по» банально не хватает ширины в одну строку, и блок расползался/переносился
+    // некрасиво. До lg показываем компактную навигацию «‹ 2 / 8 ›», как и на мобильных.
+    <div className="flex flex-col-reverse items-center gap-x-6 gap-y-3 border-t border-slate-100 py-5 sm:flex-row sm:flex-wrap sm:justify-between">
       {onPerPageChange ? (
         <label className="flex items-center gap-2 text-[13px] text-slate-500">
-          <span className="hidden sm:inline">Показывать по</span>
+          <span className="hidden lg:inline">Показывать по</span>
           <select
             value={perPage}
             onChange={(e) => onPerPageChange(Number(e.target.value))}
@@ -59,7 +63,7 @@ export function Pagination({ page, lastPage, total, perPage, onChange, onPerPage
               </option>
             ))}
           </select>
-          {typeof total === 'number' ? <span className="hidden text-slate-400 md:inline">· всего {total}</span> : null}
+          {typeof total === 'number' ? <span className="hidden text-slate-400 lg:inline">· всего {total}</span> : null}
         </label>
       ) : (
         <span />
@@ -67,17 +71,17 @@ export function Pagination({ page, lastPage, total, perPage, onChange, onPerPage
 
       {lastPage > 1 ? (
         <nav className="flex flex-wrap items-center justify-center gap-1.5" aria-label="Пагинация">
-          <span className="hidden sm:inline-flex">
+          <span className="hidden lg:inline-flex">
             <Button variant="ghost" size="sm" disabled={page <= 1} onClick={() => onChange(1)} aria-label="Первая страница">
               <IconChevronsLeft width={16} height={16} />
             </Button>
           </span>
           <Button variant="secondary" size="sm" disabled={page <= 1} onClick={() => onChange(page - 1)} aria-label="Предыдущая страница">
             <IconChevronLeft width={16} height={16} />
-            <span className="hidden sm:inline">Назад</span>
+            <span className="hidden lg:inline">Назад</span>
           </Button>
 
-          <div className="mx-1 hidden items-center gap-1 sm:flex">
+          <div className="mx-1 hidden items-center gap-1 lg:flex">
             {items.map((it, i) =>
               it === 'ellipsis' ? (
                 <span key={`e${i}`} className="px-1.5 text-slate-400">
@@ -99,15 +103,15 @@ export function Pagination({ page, lastPage, total, perPage, onChange, onPerPage
             )}
           </div>
 
-          <span className="mx-1 text-[13px] font-medium text-slate-500 sm:hidden">
+          <span className="mx-1 text-[13px] font-medium text-slate-500 lg:hidden">
             {page} / {lastPage}
           </span>
 
           <Button variant="secondary" size="sm" disabled={page >= lastPage} onClick={() => onChange(page + 1)} aria-label="Следующая страница">
-            <span className="hidden sm:inline">Вперёд</span>
+            <span className="hidden lg:inline">Вперёд</span>
             <IconChevronRight width={16} height={16} />
           </Button>
-          <span className="hidden sm:inline-flex">
+          <span className="hidden lg:inline-flex">
             <Button variant="ghost" size="sm" disabled={page >= lastPage} onClick={() => onChange(lastPage)} aria-label="Последняя страница">
               <IconChevronsRight width={16} height={16} />
             </Button>
@@ -118,7 +122,7 @@ export function Pagination({ page, lastPage, total, perPage, onChange, onPerPage
       )}
 
       {lastPage > 1 ? (
-        <form onSubmit={submitJump} className="hidden items-center gap-1.5 text-[13px] text-slate-500 sm:flex">
+        <form onSubmit={submitJump} className="hidden items-center gap-1.5 text-[13px] text-slate-500 lg:flex">
           <span>Стр.</span>
           <input
             value={jumpValue}
@@ -130,7 +134,7 @@ export function Pagination({ page, lastPage, total, perPage, onChange, onPerPage
           <span>из {lastPage}</span>
         </form>
       ) : (
-        <span className="hidden sm:inline" />
+        <span className="hidden lg:inline" />
       )}
     </div>
   );
