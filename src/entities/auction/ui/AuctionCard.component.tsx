@@ -70,7 +70,13 @@ export function AuctionCard({ item }: { item: AuctionListItem }) {
         </span>
       </Tooltip>
 
-      <div className="mt-1 flex flex-col gap-2.5 border-t border-slate-100 pt-3">
+      {item.trading.your?.bet ? (
+        <Badge tone="info" className="self-start">
+          Моя ставка: {formatMoney(item.trading.your.last_bet)}
+        </Badge>
+      ) : null}
+
+      <div className="mt-1 flex items-end justify-between gap-3 border-t border-slate-100 pt-3">
         <div className="min-w-0">
           <div className="text-lg font-extrabold leading-tight text-slate-900">{formatMoney(item.trading.price?.current ?? null)}</div>
           <div className="truncate text-[11.5px] text-slate-400">
@@ -80,34 +86,24 @@ export function AuctionCard({ item }: { item: AuctionListItem }) {
           </div>
         </div>
 
-        <div className="flex items-center justify-between gap-2">
-          {item.trading.your?.bet ? (
-            <Badge tone="info" className="min-w-0 truncate">
-              Моя ставка: {formatMoney(item.trading.your.last_bet)}
-            </Badge>
-          ) : (
-            <span />
-          )}
-
-          {action.kind === 'disabled' ? (
-            <Button variant="secondary" size="sm" disabled className="shrink-0">
-              {action.label}
-            </Button>
-          ) : action.kind === 'view-bets' ? (
-            <Link
-              to="/auctions/$auctionUuid"
-              params={{ auctionUuid }}
-              search={{ tab: 'bets' }}
-              className={buttonLinkClass('ghost', 'sm', 'shrink-0')}
-            >
-              {action.label}
-            </Link>
-          ) : (
-            <Link to="/auctions/$auctionUuid/bet" params={{ auctionUuid }} className={buttonLinkClass('primary', 'sm', 'shrink-0')}>
-              {action.label}
-            </Link>
-          )}
-        </div>
+        {action.kind === 'disabled' ? (
+          <Button variant="secondary" size="sm" disabled className="shrink-0">
+            {action.label}
+          </Button>
+        ) : action.kind === 'view-bets' ? (
+          <Link
+            to="/auctions/$auctionUuid"
+            params={{ auctionUuid }}
+            search={{ tab: 'bets' }}
+            className={buttonLinkClass('ghost', 'sm', 'shrink-0')}
+          >
+            {action.label}
+          </Link>
+        ) : (
+          <Link to="/auctions/$auctionUuid/bet" params={{ auctionUuid }} className={buttonLinkClass('primary', 'sm', 'shrink-0')}>
+            {action.label}
+          </Link>
+        )}
       </div>
     </div>
   );
