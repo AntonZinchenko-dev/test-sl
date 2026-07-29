@@ -40,7 +40,14 @@ const setBetRoute = createRoute({
 
 const routeTree = rootRoute.addChildren([auctionsListRoute, auctionDetailRoute, setBetRoute]);
 
-export const router = createRouter({ routeTree, defaultPreload: 'intent' });
+// На GitHub Pages приложение раздаётся из подпапки (BASE_URL = '/repo/'), а не с корня —
+// basepath синхронизирует историю роутера с этим префиксом. Локально/в CI BASE_URL === '/',
+// поведение не меняется.
+export const router = createRouter({
+  routeTree,
+  defaultPreload: 'intent',
+  basepath: import.meta.env.BASE_URL,
+});
 
 declare module '@tanstack/react-router' {
   interface Register {
